@@ -42,6 +42,7 @@ appsettings.json
 appsettings.*.json
 secrets.json
 !appsettings.IntegrationTests.json
+!appsettings.Development.json
 
 # Ignore publish profile
 *.pubxml
