@@ -1,4 +1,5 @@
 using SimpleDotNetStarter.Auth;
+using SimpleDotNetStarter.Common.Cors;
 using SimpleDotNetStarter.Common.Endpoints;
 using SimpleDotNetStarter.Persistence;
 using SimpleDotNetStarter.Users.Endpoints;
@@ -9,6 +10,7 @@ builder.Services.AddSwagger();
 
 builder.Services.AddAuth();
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddCustomCors(builder.Configuration);
 
 var app = builder.Build();
 
@@ -22,5 +24,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.Run();

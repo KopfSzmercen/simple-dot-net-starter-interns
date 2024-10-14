@@ -21,7 +21,7 @@ internal sealed class GetMeEndpoint : IEndpoint
             BadRequest<string>
         >
     > Handle(
-        [FromServices] AppDbContext userManager,
+        [FromServices] AppDbContext dbContext,
         [FromServices] IHttpContextAccessor httpContextAccessor,
         CancellationToken cancellationToken
     )
@@ -34,7 +34,7 @@ internal sealed class GetMeEndpoint : IEndpoint
         if (userId is null)
             return TypedResults.BadRequest("User id not found");
 
-        var currentUser = await userManager.Users
+        var currentUser = await dbContext.Users
             .Where(x => x.Id == Guid.Parse(userId))
             .FirstOrDefaultAsync(cancellationToken);
 

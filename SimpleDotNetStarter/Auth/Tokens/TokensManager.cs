@@ -25,7 +25,7 @@ internal class TokensManager(
             new(JwtRegisteredClaimNames.Sub, userId.ToString()),
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new(JwtRegisteredClaimNames.Iat, now.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64),
-            new("UserId", userId.ToString())
+            new(CustomClaims.Id, userId.ToString())
         };
 
         jwtClaims.AddRange(roles
