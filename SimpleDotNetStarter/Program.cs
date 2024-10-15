@@ -1,6 +1,7 @@
 using SimpleDotNetStarter.Auth;
 using SimpleDotNetStarter.Common.Cors;
 using SimpleDotNetStarter.Common.Endpoints;
+using SimpleDotNetStarter.Courses.Endpoints;
 using SimpleDotNetStarter.Persistence;
 using SimpleDotNetStarter.Users.Endpoints;
 
@@ -15,6 +16,7 @@ builder.Services.AddCustomCors(builder.Configuration);
 var app = builder.Build();
 
 app.AddUsersEndpoints();
+app.AddCoursesEndpoints();
 
 await app.ApplyMigrations();
 
